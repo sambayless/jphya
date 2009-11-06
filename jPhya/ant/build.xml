@@ -33,8 +33,7 @@
 	  	
 	  </path>
 	
-    <pathconvert pathsep=" " property="classpath" refid="project.class.path"/>
-	  
+   
 	  
 	  <target name="init">
 	    <!-- Create the time stamp -->
@@ -44,10 +43,11 @@
 	    <mkdir dir="${build_lwjgl}"/> 
 	  	 <mkdir dir="${build_modan}"/> 
 	  </target>
-	
+
+	      
 	  <target name="compile" depends="init"
 	        description="compile the source " >
-	  
+	    <pathconvert pathsep=" " property="classpath" refid="project.class.path"/>
 	    <!-- Compile the java code from ${src} into ${build} -->
 	    <javac srcdir="../" destdir="${build}"  >
 	    	  
@@ -58,7 +58,7 @@
 	    	  <classpath refid="project.class.path"/>
 	    	 
 	    </javac>
-        <jar destfile="jPhya.jar" basedir="${build}" filesetmanifest="mergewithoutmain" compress="true">
+        <jar destfile="jphya.jar" basedir="${build}" filesetmanifest="mergewithoutmain" compress="true">
                    <manifest>
                
                    </manifest>
