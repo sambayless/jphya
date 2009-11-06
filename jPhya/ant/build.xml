@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="JPhya" default="dist" basedir=".">
+
+	
+
+	  <!-- set global properties for this build -->
+	 <property name="src" location="../src"/>
+	 <property name="lwjgl" location="../lwjgl"/>
+	  <property name="build" location="build"/>
+	  <property name="dist"  location="../release"/>
+	 <property name="classpath-base"  location="../lib/"/>
+	 <property name="build_lwjgl" location="buildlwjgl"/>
+	<property name="build_modan" location="buildmodan"/>
+	
+	
+	<!-- ensure that classes are built against the same libs as we are distributing-->
+	<property name="classpath-base"  location="${libdir}"/>
+	
+
+	
+	  <path id="project.class.path">
+
+	  	
+	     <fileset dir="${classpath-base}">
+	  	        <include name="**/*.jar"/>
+	     	
+	  	  </fileset>
+	     <fileset dir="${build}">
+	     	  <include name="/**/*.class"/>
+	            
+	          </fileset>
+	  	
+	  	
+	  </path>
+	
+    <pathconvert pathsep=" " property="classpath" refid="project.class.path"/>
+	  
+	  
+	  <target name="init">
+	    <!-- Create the time stamp -->
+	    <tstamp/>
+	    <!-- Create the build directory structure used by compile -->
+	   <mkdir dir="${build}"/> 
+	    <mkdir dir="${build_lwjgl}"/> 
+	  	 <mkdir dir="${build_modan}"/> 
+	  </target>
+	
+	  <target name="compile" depends="init"
+	        description="compile the source " >
+	  
+	    <!-- Compile the java code from ${src} into ${build} -->
+	    <javac srcdir="../" destdir="${build}"  >
+	    	  
+	
+	    	 <include name="src/**/*.java"/>
+	    	              
+
+	    	  <classpath refid="project.class.path"/>
+	    	 
+	    </javac>
+        <jar destfile="jPhya.jar" basedir="${build}" filesetmanifest="mergewithoutmain" compress="true">
+                   <manifest>
+               
+                   </manifest>
+               </jar>
+               
+	  	
+	      <path id="project.class.path.lwjgl">
+
+	        
+	         <fileset dir="${classpath-base}">
+	                <include name="**/*.jar"/>
+	         
+	         	
+	          </fileset>
+	        <fileset dir="">
+	            <include name="jphya.jar"/>
+	          </fileset>
+	  
+	        
+	      </path>
+
+	  	
+	    <pathconvert pathsep=" " property="classpath.lwjgl" refid="project.class.path.lwjgl"/>
+	    	
+        <javac srcdir="../" destdir="${build_lwjgl}"  >
+              
+    
+             <include name="lwjgl/**/*.java"/>
+             
+
+        	  <classpath>        	  	
+        	  	<pathelement path="${build}"/>
+        	  	 <path  refid="project.class.path.lwjgl"/>
+
+        	   </classpath>
+             
+        </javac>
+        <jar destfile="jphya-lwjgl.jar" basedir="${build_lwjgl}" filesetmanifest="mergewithoutmain" compress="true">
+                    <manifest>
+                        <attribute name="Class-Path" value="lwjgl.jar jPhya.jar"/>
+                    </manifest>
+                </jar>
+	  	
+	  	
+	    <javac srcdir="../" destdir="${build_modan}"  >
+	               
+	     
+	              <include name="modan/**/*.java"/>
+	                           
+
+	               <classpath refid="project.class.path"/>
+	              
+	         </javac>
+	         <jar destfile="jphya-modan.jar" basedir="${build_modan}" filesetmanifest="mergewithoutmain" compress="true">
+	                    <manifest>
+	                
+	                    </manifest>
+	          </jar>
+	  	
+	  </target>
+
+	  <target name="dist" depends="compile"
+	        description="generate the distribution" >
+
+
+	  	
+	  </target>
+
+	  <target name="clean"
+	        description="clean up" >
+	    <!-- Delete the ${build} and ${dist} directory trees -->
+	    <delete dir="${build}"/>
+	    <delete dir="${dist}"/>
+	  </target>
+
+   
+	
+</project>
+
+
+

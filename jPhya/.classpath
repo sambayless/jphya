@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="com/jphya/scene/SceneAPI.java|com/jphya/utility/ObjectPool.java" kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry excluding="com/jphya/test/lwjgl/StreamTest.java|TestLWJGL.java" kind="src" path="lwjgl"/>
+	<classpathentry kind="src" path="modan"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/lwjgl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="jPhya/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="lib/jmePhysics-test.jar"/>
+	<classpathentry kind="lib" path="lib/jme.jar"/>
+	<classpathentry kind="lib" path="lib/jme-gamestates.jar"/>
+	<classpathentry kind="lib" path="lib/odejava-jni.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="jPhya/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jme-physics.jar"/>
+	<classpathentry kind="lib" path="lib/commons-math-1.2-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/jme-terrain.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl_util_applet.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
