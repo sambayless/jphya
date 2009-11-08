@@ -10,6 +10,8 @@ package com.jphya.utility;
 // if you catch any bugs in this, or improve upon it significantly, send me the changes
 // at evan at thisisnotalabel dot com, so we can share your changes with the world
 
+//Note: This code is not explicitly licensed under BSD, and may have to be removed.
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
